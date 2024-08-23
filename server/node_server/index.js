@@ -13,9 +13,9 @@ const { exec } = require('child_process');
 
 const app = express();
 app.use(express.json())
-
+const client_url = process.env.CLIENT;
 app.use(cors({
-  origin: 'https://lyrics-home.vercel.app', // Allow requests from this origin
+  origin: client_url, // Allow requests from this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Include cookies in CORS requests

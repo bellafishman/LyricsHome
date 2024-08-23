@@ -5,7 +5,7 @@ export default function Search(props) {
   const {handleApiSearch, searchValue, setSearchValue} = props
   
   return (
-    <div>
+    <div className='searchContainer'>
       <input className='search'
         value={searchValue}
         onChange={(e) => {

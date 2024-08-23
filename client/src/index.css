@@ -11,12 +11,17 @@ body {
     align-items: center; /* Vertically center the content */
     justify-content: space-between; 
     padding: 0 20px; /* Add padding for some spacing */
+    z-index: 100;
 }
 .NavBar nav {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center; /* Vertically center the nav items */
+}
+.NavBar > * {
+    position: relative;
+    z-index: 101;
 }
 .NavBar-HomeLink {
     display: flex;
@@ -83,18 +88,23 @@ body {
     justify-content: center; /* center search content horizontally */
     align-items: center; /* center vertically */
     gap: 10px; 
-    padding: 20px; 
+    padding: 20px;
 }
 .search {
     border-radius: 10px;
     font-family: "Marcellus", serif;
     align-items: center; /* Center align vertically */
     outline: none;
-    width: 70%;
+    width: 80%;
     padding: 10px; 
-    font-size: 14px; 
+    font-size: 16px; 
+
     display: block;
-    background-color: #BA5C12;
+    background-color: #ebb287;
+}
+.searchContainer {
+    display: flex;
+    justify-content: center;
 }
 .searchResults {
     font-family: "Crimson Text", serif;
@@ -133,6 +143,51 @@ body {
     overflow-y: auto;
     max-height: 80vh;
 }
+.close-button {
+    outline: none;
+    text-decoration: none;
+    font-size: 18px;
+    border: none;
+    background: rgb(186, 185, 185);
+    border-radius: 10px;
+}
+.close-button:hover {
+    color: white;
+}
+.searchResults {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal-width columns */
+    gap: 15px; /* Adds space between grid items */
+    width: 90%;
+    margin: 0 auto; /* Centers the container */
+    padding: 20px; 
+}
+.search-track {
+    background: none;
+    border: 5px black;
+    text-decoration: none;
+}
+.search-track-info {
+    font-family: "Marcellus", serif;
+    display: flex;
+    flex-direction: column;
+}
+.search-track-name {
+    margin: 0;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 700;
+}
+.search-track-artists {
+    margin: 0;
+    margin-top: 5px;
+}
+.search-album-name {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+    margin-top: 5px;
+}
 .hidden {
     display: none;
 }
@@ -151,6 +206,7 @@ body {
     background-position: center;
     background-size: cover;
     overflow: hidden;
+    z-index: 1;
 }
 .HomeHeader::before {
     content: '';
@@ -162,9 +218,9 @@ body {
     background: linear-gradient(to bottom, rgba(2, 4, 8, 0.892), rgba(27, 27, 27, 0.59));
     z-index: 1; /* Overlay this above the image */
 }
-.HomeHeader > * {
+.HomeHeader  > * {
     position: relative;
-    z-index: 2; /* Ensure other content is above the overlay */
+    z-index: 3; /* Ensure other content is above the overlay */
 }
 .HomeIntroduction {
     font-family: "Marcellus", serif;
@@ -175,15 +231,12 @@ body {
     padding-left: 50px;
     padding-right: 50px;
     margin-top: 100px;
+    z-index: 2;
 }
 .userName {
     color: #39a52d;
     text-decoration: underline black;
 }
-
-
-
-
 
 /* ------------------------------------------------------------------------------------*/
 /* Home Suggestions */

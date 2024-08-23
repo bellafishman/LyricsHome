@@ -6,9 +6,7 @@
 const axios = require('axios');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
-const { UserModel } = require('../models/Users');
-const querystring = require('node:querystring'); 
-const qs = require('qs');
+
 
 
 const SPOTIFY_Key = process.env.SPOTIFY_ID;

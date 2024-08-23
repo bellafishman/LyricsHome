@@ -32,8 +32,7 @@ mongoose.connect(process.env.MONGO_URL)
 const SPOTIFY_Key = process.env.SPOTIFY_ID;
 const SPOTIFY_Secret = process.env.SPOTIFY_SECRET;
 
-const { searchSpotify, getTrackInfo, getPlaylistTracks, getMyPlaylistTracks, getNewReleases, apiCallWithRetry } = require('./src/spotify_connect');
-const { getLyrics } = require('./src/get_lyrics');
+const { searchSpotify, getTrackInfo, getPlaylistTracks, apiCallWithRetry } = require('./src/spotify_connect');
 const { getSpotifyAccessToken } = require('./src/spotify_auth');
 // const { downloadImages } = require('./download_images')
 

@@ -14,10 +14,15 @@ const { exec } = require('child_process');
 const app = express();
 app.use(express.json())
 
-// CHANGE LATER TO REFLECT ACTUAL CLIENT LINK
 app.use(cors({
   origin: 'https://lyrics-home.vercel.app', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true, // Include cookies in CORS requests
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 // db:
 mongoose.connect(process.env.MONGO_URL)
@@ -26,8 +31,6 @@ mongoose.connect(process.env.MONGO_URL)
 
 const SPOTIFY_Key = process.env.SPOTIFY_ID;
 const SPOTIFY_Secret = process.env.SPOTIFY_SECRET;
-const jwtSecret = process.env.JWT_SECRET;
-const refreshSecret = process.env.JWT_REFRESH;
 
 const { searchSpotify, getTrackInfo, getPlaylistTracks, getMyPlaylistTracks, getNewReleases, apiCallWithRetry } = require('./src/spotify_connect');
 const { getLyrics } = require('./src/get_lyrics');

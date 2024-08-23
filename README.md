@@ -1,4 +1,4 @@
-Group:
+Author:
 Bella Fishman
 
 App Description:

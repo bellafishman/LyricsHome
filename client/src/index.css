@@ -95,10 +95,9 @@ body {
     font-family: "Marcellus", serif;
     align-items: center; /* Center align vertically */
     outline: none;
-    width: 80%;
+    width: 80%; 
     padding: 10px; 
     font-size: 16px; 
-
     display: block;
     background-color: #ebb287;
 }
@@ -518,90 +517,9 @@ button.lyric-line {
     color: white;
 }
 /* sidebar*/
-.sidebar {
-    position: fixed;
-    display: flex;
-    inset: 0;
-    z-index: 10; /* Ensure sidebar above other text and elements */
-    flex-direction: row;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 100%; /* Full screen on small devices */
-}
 
-/* Sidebar content */
-.sidebarContents {
-    z-index: 15;
-    position: relative;
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-    gap: 1rem;
-    padding: 1rem;
-    overflow-y: auto; /* Allow scrolling if contents overflow */
-    height: 100%;
-    width: 100%;
-    max-width: 800px;
-    background: white;
-    margin: auto;
-}
-
-/* Sidebar button styling */
-.sidebarContents button {
-    background: transparent;
-    color: #BA5C12;
-    border: none;
-    outline: none;
-    margin-right: auto;
-    padding: 1rem 0rem;
-    transition-duration: 200ms;
-    cursor: pointer;
-}
-
-.sidebarContents button i {
-    font-size: 20px; /* Increase button icon size */
-}
-
-.sidebarContents button:hover {
-    opacity: 0.75;
-}
-.add-lyriccomments button {
-    background: transparent;
-    color: #BA5C12;
-    transition-duration: 200ms;
-    cursor: pointer;
-}
-.add-lyriccomments button i {
-    font-size: 20px; /* Increase button icon size */
-}
-.add-lyriccomments button:hover {
-    opacity: 0.75;
-}
-
-/* Styling for larger screens */
-@media (min-width: 640px) {
-    .sidebar {
-        position: fixed; /* Keep fixed on larger screens */
-        top: 0;
-        right: 0;
-        min-width: 30%;
-        max-width: 40%; /* Sidebar width on larger screens */
-        box-shadow: 0 0 20px 1px #01041b;
-        height: 100vh; /* Ensure full height */
-        margin-left: auto;
-    }
-    .sidebarContents {
-        width: 100%;
-        height: 100%; /* Full height */
-        overflow-y: auto; /* Allow scrolling if needed */
-        margin: 0; /* Remove margin */
-        margin-left: auto;
-    }
-}
 
 /* ------------------------------------------------------------------------------------*/
-
-
 
 
 /* <div className='loader'></div> */
@@ -612,6 +530,7 @@ button.lyric-line {
     background: 
         radial-gradient(farthest-side,#BA5C12 94%,#0000) top/8px 8px no-repeat,
         conic-gradient(#0000 30%,#BA5C12);
+    mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
     -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
     animation: l13 1s infinite linear;
 }
@@ -627,85 +546,6 @@ button.lyric-line {
     width: 100vw; 
 }
 /* ------------------------------------------------------------------------------------*/
-/* Login Page */
-.Login-Name {
-    font-family: "Bebas Neue", sans-serif;
-    color: #BA5C12;
-    font-size: 38px;
-    font-weight: bold;
-    text-decoration: none;
-}
-.Login-Container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Lexend Deca", sans-serif;
-    line-height: 1.5;
-    /* background color fills background visible*/
-    min-height: 100vh;
-    background: #BA5C12;
-    flex-direction: column;
-    margin: 0;
-}
-.Login {
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    padding: 10px 20px;
-    padding-top: 40px;
-    transition: transform 0.2s;
-    max-width: 600px;
-    width: 80%;
-    text-align: center;
-}
-.spotify {
-    border-radius: 10px;
-    background-color: #39a52d;
-    padding: 5px;
-    max-width: 300px;
-    font-size: 16px;
-}
-.Login-head {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-.LoginLabel {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    text-align: left;
-    color: #555;
-    font-weight: bold;
-}
-.LoginInput {
-    display: block;
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.LoginButton {
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    background-color: #39a52d;
-    width: 100%;
-    font-size: 16px;
-}
-.wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .error {
     position: fixed;

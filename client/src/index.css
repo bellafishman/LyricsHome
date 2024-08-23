@@ -154,6 +154,9 @@ body {
 .close-button:hover {
     color: white;
 }
+.close-button:focus {
+    color: white;
+}
 .searchResults {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Creates two equal-width columns */
@@ -169,6 +172,9 @@ body {
     padding-top: 5px;
 }
 .search-track:hover {
+    background: rgb(220, 220, 220);
+}
+.search-track:focus {
     background: rgb(220, 220, 220);
 }
 .search-track-info {

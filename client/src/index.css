@@ -294,11 +294,13 @@ body {
 .track {
     /* take away button styling */
     padding-top: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
     background: none;
 	border: none;
 	outline: none;
-    flex: 1 1 calc(100% / 3 - 10px); /* Adjust based on number of items per row */
-    max-width: calc(100% / 3 - 10px); /* Adjust based on number of items per row */
+    flex: 1 1 calc(100% / 3 - 0px); /* Adjust based on number of items per row - gap*/
+    max-width: calc(100% / 3 - 0px); /* Adjust based on number of items per row - gap */
     box-sizing: border-box;
     position: relative;
     /* align sub elements to same top height */
@@ -377,12 +379,14 @@ body {
     .track {
         flex: 1 1 calc(100% / 4 - 10px); /* Adjust based on number of items per row */
         max-width: calc(100% / 4 - 10px); /* Adjust based on number of items per row */
+        padding-left: 5px;
+        padding-right: 5px;
     }
     .suggestions {
         /* contains all suggestions */
         /* add left and right margin */
-        margin-left: 30px;
-        margin-right: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }
 
@@ -390,15 +394,27 @@ body {
     .track {
         flex: 1 1 calc(100% / 5 - 10px); /* Adjust based on number of items per row */
         max-width: calc(100% / 5 - 10px); /* Adjust based on number of items per row */
+        padding-left: 5px;
+        padding-right: 5px;
     }
     .suggestions {
         /* contains all suggestions */
         /* add left and right margin */
-        margin-left: 50px;
-        margin-right: 50px;
+        margin-left: 40px;
+        margin-right: 40px;
     }
 }
 @media screen and (max-width: 768px) {
+    .track-container {
+        /* spaces between items and content here in a column */
+        gap: 0;
+    }
+    .suggestions {
+        /* contains all suggestions */
+        /* add left and right margin */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
     .suggestionsPrev {
         /* left aligned */
         margin-right: 0px;

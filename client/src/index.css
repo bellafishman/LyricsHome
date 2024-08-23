@@ -166,6 +166,10 @@ body {
     background: none;
     border: 5px black;
     text-decoration: none;
+    padding-top: 5px;
+}
+.search-track:hover {
+    background: rgb(220, 220, 220);
 }
 .search-track-info {
     font-family: "Marcellus", serif;

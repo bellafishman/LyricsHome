@@ -5,7 +5,7 @@
         "src": "node_server/index.js",
         "use": "@vercel/node",
         "config": {
-          "includeFiles": "node_server/src/**,python_scripts/**"
+          "includeFiles": "node_server/src/**"
         }
       }
     ],

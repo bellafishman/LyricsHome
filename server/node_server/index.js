@@ -3,7 +3,7 @@ const path = require('path');
 const cors = require('cors');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const axios = require('axios');
-
+const request = require('request');
 
 // connection to mongodb
 const {mongoose} = require('mongoose');
@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json())
 
 app.use(cors({
-  origin: 'https://lyrics-home.vercel.app', // Allow requests from this origin
+  origin: 'http://localhost:5173', // Allow requests from this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, // Include cookies in CORS requests
@@ -118,20 +118,20 @@ app.get('/api/lyrics', async (req, res) => {
     return res.status(400).send('Missing artistName or trackName');
   }
 
-  try {
-    const lyricsData = await apiCallWithRetry(spotifyAccessToken,
-        (token) => getLyrics(track, artist, token), 
-        (newToken) => {
-          // SAVE TO USER PROFILE INSTEAD
-          spotifyAccessToken = newToken;
-    });
+  const url = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(track)}`;
 
-    console.log("got lyrics!");
+  request(url, function (error, response, body) {
+    if (error) {
+      return res.status(500).json({ error: 'Error fetching lyrics' });
+    }
 
-    res.json(lyricsData);
-  } catch (error) {
-    res.status(500).send('Error fetching track info and lyrics');
-  }
+    if (response.statusCode !== 200) {
+      return res.status(response.statusCode).json({ error: 'Lyrics not found' });
+    }
+
+    
+    res.json(body);
+  });
 });
 
 // Playlist Tracks

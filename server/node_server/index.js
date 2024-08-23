@@ -16,7 +16,7 @@ app.use(express.json())
 
 // CHANGE LATER TO REFLECT ACTUAL CLIENT LINK
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow requests from this origin
+  origin: 'https://lyrics-home.vercel.app', // Allow requests from this origin
 }));
 
 // db:

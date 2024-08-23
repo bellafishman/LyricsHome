@@ -398,6 +398,18 @@ body {
         margin-right: 50px;
     }
 }
+@media screen and (max-width: 768px) {
+    .suggestionsPrev {
+        /* left aligned */
+        margin-right: 0px;
+        font-size: 26px;
+    }
+    .suggestionsNext {
+        /* right aligned */
+        margin-left: 0px;
+        font-size: 26px;
+    }
+}
 
 /* ------------------------------------------------------------------------------------*/
 /* Lyrics Header */

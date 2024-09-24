@@ -12,10 +12,10 @@ export default function SongPage() {
   // ending up having to use searchParams to send all of the data
   const [searchParams] = useSearchParams();
   const artistName = searchParams.get('artist');
-  const trackName_OG = searchParams.get('track');
+  const trackName = searchParams.get('track');
 
   // Remove any "(Feat. ...)" or "(feat. ...)" from the track name
-  const trackName = trackName_OG.replace(/\(feat\..*\)/i, '').trim();
+  //const trackName = trackName_OG.replace(/\(feat\..*\)/i, '').trim();
 
 
   // ADD ERROR CASE FOR NO SONG SELECTED

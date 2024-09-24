@@ -29,15 +29,16 @@ mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log('DB connected'))
   .catch((err) => console.log('DB not connected: ', err))
 
-const SPOTIFY_Key = process.env.SPOTIFY_ID;
-const SPOTIFY_Secret = process.env.SPOTIFY_SECRET;
 
 const { searchSpotify, getTrackInfo, getPlaylistTracks, apiCallWithRetry } = require('./src/spotify_connect');
 const { getSpotifyAccessToken } = require('./src/spotify_auth');
 // const { downloadImages } = require('./download_images')
 
+const { getLyrics } = require('genius-lyrics-api');
 
-const PORT = process.env.PORT || 8080;
+
+
+const PORT = process.env.PORT || 9090;
 const redirect_uri = 'http://localhost:8080/callback'
 
 // Serve the static files from the React app
@@ -109,28 +110,37 @@ app.get('/api/track/:id', async (req, res) => {
 app.get('/api/lyrics', async (req, res) => {
   const { artistName, trackName } = req.query;
   console.log('got to api/lyrics');
+  
   // decode components, commas, exclamations for api call
+  // and for printing to check
   const artist = decodeURIComponent(artistName);
   const track = decodeURIComponent(trackName);
+
+  console.log('artist: ', artist);
+  console.log('track name: ', track);
 
   if (!artistName || !trackName) {
     return res.status(400).send('Missing artistName or trackName');
   }
 
-  const url = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(track)}`;
+  const options = {
+    apiKey: process.env.GENIUS_ACCESS_TOKEN,
+    title: track,
+    artist: artist
+  };
 
-  request(url, function (error, response, body) {
-    if (error) {
-      return res.status(500).json({ error: 'Error fetching lyrics' });
-    }
-
-    if (response.statusCode !== 200) {
-      return res.status(response.statusCode).json({ error: 'Lyrics not found' });
-    }
-
-    
-    res.json(body);
+  getLyrics(options)
+  .then((lyrics) => {
+    // console.log(lyrics); // Logs the lyrics to the console
+    res.json(lyrics);    // Sends the lyrics as a JSON response
+  })
+  .catch((err) => {
+    console.error(err);  // Logs the error
+    res.status(500).json({ error: 'Failed to fetch lyrics' }); // Sends error response
   });
+  // old api -- less effective
+  //const url = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(track)}`;
+
 });
 
 // Playlist Tracks
